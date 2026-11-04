@@ -6,8 +6,11 @@ let tts = null;
 async function init(engine) {
   const progress_callback = (i) => {
     if (i.status === "progress" && /onnx$/.test(i.file || "")) postMessage({ type: "download", pct: Math.round(i.progress) });
+    if (i.status === "done" && /onnx$/.test(i.file || "")) postMessage({ type: "stage", text: "preparing the voice" });
   };
+  postMessage({ type: "stage", text: "loading the voice software" });
   const lib = await import("./vendor/web/kokoro.web.js");
+  postMessage({ type: "stage", text: "opening the voice" });
   lib.env.wasmPaths = here("./vendor/web/");
   const setup = engine === "A" ? { dtype: "fp32", device: "webgpu" } : { dtype: "q8", device: "wasm" };
   tts = await lib.KokoroTTS.from_pretrained(ID, { ...setup, progress_callback });
