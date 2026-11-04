@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Voice test</title>
+<style>
+body{font:17px/1.45 -apple-system,system-ui,sans-serif;margin:0 auto;max-width:560px;padding:22px 18px 60px;background:#101827;color:#eef2f8}
+h1{font-size:25px;margin:0 0 6px}ol{padding-left:22px}li{margin:6px 0}
+button{font:600 18px -apple-system,system-ui,sans-serif;width:100%;padding:15px;border:0;border-radius:14px;background:#dbe5ff;color:#101827;margin:8px 0}
+button.q{background:#26324a;color:#eef2f8;font-weight:500}
+#bar{height:12px;background:#26324a;border-radius:6px;overflow:hidden;margin:14px 0 6px}#fill{height:100%;width:0;background:#9db8ff}
+#status{font-size:21px;font-weight:600;margin:12px 0 2px}#sub{color:#aeb9cc;font-size:15px}
+#results{width:100%;box-sizing:border-box;height:210px;background:#0b1220;color:#cfd8e8;border:1px solid #26324a;border-radius:10px;padding:10px;font:12px/1.4 ui-monospace,Menlo,monospace}
+audio{width:100%;margin:8px 0}[hidden]{display:none!important}
+</style></head><body>
+<h1>Voice test</h1><p id="intro">Makes a short story's audio on this phone, one piece at a time, saving as it goes. If the page crashes, it picks up where it stopped.</p>
+<ol id="steps"><li>Plug in the phone and use Wi-Fi. The first step downloads about 330 MB, and about 90 MB more if it needs its backup engine.</li><li>In Settings › Display &amp; Brightness › Auto-Lock, choose <b>Never</b> for now.</li><li>Keep this page open and on screen.</li><li>If Safari shows “A problem repeatedly occurred”, tap <b>Reload</b>. The test carries on.</li></ol>
+<button id="start">Start test</button>
+<div id="status"></div><div id="sub"></div><div id="bar" hidden><div id="fill"></div></div>
+<audio id="player" controls hidden></audio>
+<div id="after" hidden>
+<button id="copy">Copy results</button>
+<textarea id="results" readonly></textarea>
+<button id="other" class="q" hidden></button>
+</div>
+<button id="reset" class="q" hidden>Start over</button>
+<script type="module" src="app.js"></script></body></html>
